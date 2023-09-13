@@ -48,6 +48,24 @@ npx hardhat run scripts/deploy.ts
 
 <br>
 
+```shell
+# 컴파일
+npx hardhat compile
+
+# 테스트 코드 실행
+npx hardhat test
+
+# hardhat 로컬 배포
+npx hardhat node                                        # local node 실행
+npx hardhat run --network localhost scripts/deploy.ts   # localhost network에 배포
+
+# hardhat 테스트 넷 배포 (메인넷에 배포하고 테스트하기에는 높은 비용 때문에 테스트넷 사용)
+npx hardhat run --network <your-network> scripts/deploy.ts
+npx hardhat run --network sepolia scripts/deploy.ts         # 이더리움 Seporlia testnet 이용 예시
+```
+
+<br>
+
 ## ERC20
 
 ERC20: A standard interface for tokens.
@@ -62,31 +80,12 @@ ERC: **Ethereum Improvement Proposals를 코드로 만든것**
 
 <br>
 
-```shell
-# 컴파일
-npx hardhat compile
-
-# 테스트 코드 실행
-npx hardhat test
-
-# hardhat 로컬 배포
-npx hardhat node                                        # local node 실행
-npx hardhat run --network localhost scripts/deploy.ts   # localhost network에 배포
-
-# hardhat 테스트 넷 배포 (메인넷에 배포하고 테스트하기에는 높은 비용 때문에 테스트넷 사용)
-npx hardhat run --network <your-network> scripts/deploy.ts
-npx hardhat run --network sepolia scripts/deploy.ts         # 이더리움 Seporlia testnet을 이용 예시
-```
-
-<br>
-
 ## Hardhat 관련 팁
 
 ### 1. Hardhat Network Helpers
 
 실제 네트워크를 포크해서 사용할 수도 있습니다. local 혹은 HRE에서 실행하고 테스트해볼 수 있습니다.  
 테스트 하다보면 이미 배포되어있는 컨트랙트와 상호작용하고 싶을때가 있을 수 있습니다. 이때 즐겨 사용합니다.
-
 https://hardhat.org/hardhat-network/docs/guides/forking-other-networks
 
 가상의 채굴을 통해 시간에 따른 변화도 테스트 해볼 수 있습니다.  
@@ -110,6 +109,6 @@ gas 측정하는데 사용합니다. 그때그때 현재 네트워크에서 발�
 
 ### 5. hardhat/console.sol
 
-contract 특성상 함수가 실행되고 어디서 에러가 났는지 revert 를 설정하지 않으면 전혀 알 수 없습니다.
+contract 특성상 함수가 실행되고 어디서 에러가 났는지 revert 를 설정하지 않으면 전혀 알 수 없습니다.  
 contract 코드 상에 콘솔을 찍을 수 있어 에러를 찾는데 매우 용이합니다.  
 https://hardhat.org/tutorial/debugging-with-hardhat-network
